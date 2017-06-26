@@ -1,0 +1,22 @@
+{
+  "name": "pure-masonry",
+  "version": "0.1.0",
+  "description": "Masonry DOM effect with pure JavaScript",
+  "main": "pureMasonry.js",
+  "repository": "caliberi/pure-masonry",
+  "license": "MIT",
+  "author": {
+    "name": "Caliberi",
+    "url": "https://github.com/caliberi"
+  },
+  "keywords": [
+    "masonry",
+    "vanillaJS"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglifyjs": "^0.6.2"
+  }
+}
