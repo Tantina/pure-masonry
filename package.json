@@ -1,6 +1,6 @@
 {
-  "name": "pure-masonry",
-  "version": "0.1.0",
+  "name": "pure-masonry-js",
+  "version": "0.1.1",
   "description": "Masonry DOM effect with pure JavaScript",
   "main": "pureMasonry.js",
   "repository": "caliberi/pure-masonry",

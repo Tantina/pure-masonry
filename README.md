@@ -15,12 +15,12 @@ Add pureMasonry.min.css and pureMasonry.min.js to you project code.
 ```html
 <head>
 	...
-	<link rel="stylesheet" href="node_modules/pure-masonry/src/pureMasonry.min.css">
+	<link rel="stylesheet" href="node_modules/pure-masonry/dist/pureMasonry.css">
 	...
 </head>
 <body>
 	...
-	<script type="text/javascript" src="node_modules/pure-masonry/src/pureMasonry.min.js"></script>
+	<script type="text/javascript" src="node_modules/pure-masonry/dist/pureMasonry.js"></script>
 </body>
 ```
 **2.**
