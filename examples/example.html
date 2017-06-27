@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example Masonry</title>
+  <link rel="stylesheet" href="../dist/pureMasonry.css">
+</head>
+<body>
+
+  <div id="masonry-wall">
+    <div class="brick">
+       <img src="http://via.placeholder.com/350x150" alt="Placeholder">
+    </div>
+    <div class="brick">
+       <img src="http://via.placeholder.com/350x100" alt="Placeholder 100">
+    </div>
+    <div class="brick">
+       <img src="http://via.placeholder.com/440x150" alt="Placeholder 440">
+    </div>
+    <div class="brick">
+       <img src="http://via.placeholder.com/400x100" alt="Placeholder 400">
+    </div>
+    <div class="brick">
+       <img src="http://via.placeholder.com/350x250" alt="Placeholder 250">
+    </div>
+  </div>
+  
+  <script type="text/javascript" id="example" src="../dist/pureMasonry.js"></script>
+  <script>
+    var options = {
+      container: '#masonry-wall',
+      width: 320,
+      horizontal_gutter: 10,
+      vertical_gutter: 10,
+      responsive: true
+    };
+    PureMasonry.init(options);
+  </script>
+</body>
+</html>

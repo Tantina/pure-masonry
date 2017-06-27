@@ -8,6 +8,7 @@ var src = {
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglifyjs');
+var webpack = require('gulp-webpack');
 
 gulp.task('sass', function () {
  return gulp.src(src.sass)
@@ -15,15 +16,15 @@ gulp.task('sass', function () {
    .pipe(gulp.dest('./dist'));
 });
 
-gulp.task('js', function() {
-  gulp.src(src.js)
-    .pipe(uglify())
-    .pipe(gulp.dest('./dist'))
+gulp.task('webpack', function() {
+  return gulp.src('src/pureMasonry.js')
+  .pipe(webpack( require('./webpack.config.js') ))
+  .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('default', ['sass', 'js']);
+gulp.task('default', ['sass', 'webpack']);
 
 gulp.task('watch', function() {
   gulp.watch(src.sass, ['sass']);
-  gulp.watch(src.js, ['js']);
+  gulp.watch(src.js, ['webpack']);
 });

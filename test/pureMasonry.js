@@ -47,34 +47,36 @@ var PureMasonry =
 
 	'use strict';
 	
-	var brickContainer = void 0;
-	var mason = {};
-	
 	module.exports = {
-		init: function init(options) {
-			brickContainer = document.querySelector(options.container);
-			mason = {
-				options: {
-					brickWidth: options.width,
-					horizontalGutter: options.horizontal_gutter,
-					verticalGutter: options.vertical_gutter,
-					underConstruction: options.responsive
-				},
-				brickContainer: brickContainer
+		build: function build(options) {
+			var mason = {
+				options: {},
+	
+				grabTrowel: function grabTrowel(brickWidth, horizontalGutter, verticalGutter) {
+					this.options = {
+						brickWidth: brickWidth,
+						horizontalGutter: horizontalGutter,
+						verticalGutter: verticalGutter,
+						underConstruction: true
+					};
+	
+					this.brickContainer = document.getElementById('masonry-wall');
+	
+					_build(this.options);
+				}
 			};
-			build(mason.options);
 		}
 	};
 	
-	var build = function build(options) {
+	var _build = function _build(options) {
 	
-		//  get each brick
+		//	get each brick
 		var bricks = [];
-		for (var _brickIndex = 0; _brickIndex < mason.brickContainer.children.length; _brickIndex++) {
-			var classNames = mason.brickContainer.children[_brickIndex].className.split(' ');
+		for (var brickIndex = 0; brickIndex < mason.brickContainer.children.length; brickIndex++) {
+			var classNames = mason.brickContainer.children[brickIndex].className.split(' ');
 			if (classNames.indexOf('brick') > -1) {
-				mason.brickContainer.children[_brickIndex].style.width = options.brickWidth + 'px';
-				bricks.push(mason.brickContainer.children[_brickIndex]);
+				mason.brickContainer.children[brickIndex].style.width = options.brickWidth + 'px';
+				bricks.push(mason.brickContainer.children[brickIndex]);
 			}
 		}
 	
@@ -103,38 +105,15 @@ var PureMasonry =
 		while (brickIndex < bricks.length) {
 			//	get shortest column
 			var minColumnValue = Math.min.apply(Math, columnHeight);
-			var minColumnKey = void 0;
-			for (var _column = 0; _column < bricksPerRow; _column++) {
+			var minColumnKey;
+			for (var column = 0; column < bricksPerRow; column++) {
 				//	find the key for the minimum value
-				if (columnHeight[_column] === minColumnValue) {
-					minColumnKey = _column;
+				if (columnHeight[column] === minColumnValue) {
+					minColumnKey = column;
 					//	use the leftmost in case several columns have the same height
 					break;
 				}
 			}
-	
-			var tmpValues = [];
-			console.log(bricks[1].style);
-			console.log(bricks[bricks.length - 1].getBoundingClientRect());
-			for (var ind = 0; ind < bricks.length; ind++) {
-				tmpValues.push(bricks[ind].getBoundingClientRect().top);
-			}
-	
-			console.log(tmpValues);
-	
-			var computedHeight = 0;
-			for (var item = 0; item < bricks.length; item++) {
-				if (parseInt(bricks[item].style.top) > 0) {
-					computedHeight += parseInt(bricks[item].style.top);
-				} else {
-					computedHeight = Math.max.apply(Math, tmpValues);
-				}
-			}
-			console.log();
-			brickContainer.style.height = computedHeight + 'px';
-			console.log(computedHeight);
-			computedHeight = 0;
-	
 			//	set coordinates for brick
 			bricks[brickIndex].style.left = minColumnKey * grossWidth + 'px';
 			bricks[brickIndex].style.top = columnHeight[minColumnKey] + options.verticalGutter + 'px';
@@ -148,7 +127,6 @@ var PureMasonry =
 	window.onresize = function () {
 		//	if masonry is not disabled
 		if (mason.options.underConstruction) {
-	
 			var widthBefore = mason.brickContainer.clientWidth; //	get width before resizing
 			//	if already called within last second, reset timer
 			if (waitingForResize) {
@@ -157,9 +135,27 @@ var PureMasonry =
 			var waitingForResize = setTimeout(function () {
 				//	if container width has changed in the last second
 				if (widthBefore !== mason.brickContainer.clientWidth) {
-					build(mason.options);
+					_build(mason.options);
 				}
-			}, 200);
+			}, 1000);
+		}
+	};
+	
+	//	initialise main object
+	var mason = {
+		options: {},
+	
+		grabTrowel: function grabTrowel(brickWidth, horizontalGutter, verticalGutter) {
+			this.options = {
+				brickWidth: brickWidth,
+				horizontalGutter: horizontalGutter,
+				verticalGutter: verticalGutter,
+				underConstruction: true
+			};
+	
+			this.brickContainer = document.getElementById('masonry-wall');
+	
+			_build(this.options);
 		}
 	};
 
