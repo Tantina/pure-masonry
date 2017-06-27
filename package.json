@@ -1,9 +1,15 @@
 {
   "name": "pure-masonry-js",
-  "version": "0.1.1",
+  "title": "Pure Masonry",
+  "private": false,
+  "version": "0.1.2",
   "description": "Masonry DOM effect with pure JavaScript",
-  "main": "pureMasonry.js",
+  "main": "dist/pureMasonry.js",
   "repository": "caliberi/pure-masonry",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/caliberi/pure-masonry"
+  },
   "license": "MIT",
   "author": {
     "name": "Caliberi",
@@ -11,7 +17,8 @@
   },
   "keywords": [
     "masonry",
-    "vanillaJS"
+    "vanillaJS",
+    "layout"
   ],
   "dependencies": {},
   "devDependencies": {
