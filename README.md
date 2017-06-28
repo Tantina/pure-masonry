@@ -11,7 +11,7 @@ npm install --save-dev pure-masonry
 **Usage**
 
 **1.**
-Add pureMasonry.min.css and pureMasonry.min.js to you project code.
+Add pureMasonry.js to your project code and init the Plugin like shown below
 
 ```html
 <html>
