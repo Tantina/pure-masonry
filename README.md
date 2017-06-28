@@ -119,7 +119,7 @@ By default you get a whole specturm of them, but you can control the options by 
         <tr>
             <td>centered</td>
             <td>true (Boolean)</td>
-            <td>If you want the content of the masonry to be centered in the container (uses wi</td>
+            <td>If you want the content of the masonry to be centered in the container (uses width to cal the needed space for bricks in a row)</td>
         </tr>
     </tbody>
 </table>
