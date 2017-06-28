@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Example Masonry</title>
+  <style>
+    img {
+      display: block;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,body {
+      margin: 0;
+    }
+    .container {
+      width: 1200px;
+      position: relative;
+      margin: 0 auto;
+    }
+    @media (max-width: 1200px) {
+      .container {
+        width: 700px;
+      }
+    }
+
+    @media (max-width: 750px) {
+      .container {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="masonry-wall">
+      <div class="brick">
+         <img src="http://via.placeholder.com/450x300" alt="Placeholder 450">
+      </div>
+      <div class="brick">
+         <img src="http://via.placeholder.com/350x250" alt="Placeholder 250">
+      </div>
+      <div class="brick">
+         <img src="http://via.placeholder.com/350x150" alt="Placeholder">
+      </div>
+      <div class="brick">
+         <img src="http://via.placeholder.com/350x100" alt="Placeholder 100">
+      </div>
+      <div class="brick">
+         <img src="http://via.placeholder.com/440x150" alt="Placeholder 440">
+      </div>
+      <div class="brick">
+         <img src="http://via.placeholder.com/400x100" alt="Placeholder 400">
+      </div>
+    </div>
+  </div>
+  
+  <script type="text/javascript" id="example" src="../dist/pureMasonry.js"></script>
+  <script>
+    var options = {
+      container: '#masonry-wall',
+      width: 320,
+      horizontal_gutter: 5,
+      vertical_gutter: 5,
+      responsive: true,
+      transition: {
+        duration: '550ms',
+        easing: 'ease'
+      },
+      advanced: {
+        centered: true
+      }
+    };
+    PureMasonry.init();
+  </script>
+</body>
+</html>
