@@ -15,13 +15,26 @@
     html,body {
       margin: 0;
     }
-    .masonry-container {
-      overflow: hidden;
+    .container {
+      width: 1200px;
+      position: relative;
+      margin: 0 auto;
+    }
+    @media (max-width: 1200px) {
+      .container {
+        width: 700px;
+      }
+    }
+
+    @media (max-width: 750px) {
+      .container {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="masonry-container">
+  <div class="container">
     <div id="masonry-wall">
       <div class="brick">
          <img src="http://via.placeholder.com/450x300" alt="Placeholder 450">
@@ -53,14 +66,14 @@
       vertical_gutter: 5,
       responsive: true,
       transition: {
-        duration: '600ms',
-        easing: 'cubic-bezier(0.23, 1, 0.32, 1)',
+        duration: '550ms',
+        easing: 'ease'
       },
       advanced: {
         centered: true
       }
     };
-    PureMasonry.init(options);
+    PureMasonry.init();
   </script>
 </body>
 </html>
