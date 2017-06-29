@@ -1,6 +1,7 @@
 let brickContainer;
 let mason = {};
 let timeout;
+let is_moved;
 let defaultOptions = {
   container: '#masonry-wall',
   width: 320,
@@ -80,11 +81,16 @@ module.exports = {
                 underConstruction: m_resp
             },
             brickContainer: brickContainer,
-            advanced: m_adv
+            advanced: options.advanced
         };
+
+        if(typeof options.onRebuild === 'function') {
+          mason.onRebuild = options.onRebuild;
+        }
 
         // on load build masonry
         window.onload = function() {
+            
             build(mason.options);
             return;
         }
@@ -192,6 +198,7 @@ let build = function(options) {
         brickIndex++;
 
     }
+
     if (typeof mason.advanced.centered !== 'undefined' && mason.advanced.centered === true) {
       let width = bricksPerRow * mason.options.brickWidth;
       brickContainer.style.width = width + (mason.options.horizontalGutter * bricksPerRow) + 'px';
@@ -202,6 +209,7 @@ let build = function(options) {
     // if transition is setup need to wait until bricks are moved first then calc height
     setTimeout(function() {
       let combHeightOffsetValues = [];
+      console.log('--here');
 
       for (let ind = 0; ind < bricks.length; ind++) {
           let css_decl = window.getComputedStyle(bricks[ind]);
@@ -212,6 +220,10 @@ let build = function(options) {
 
       brickContainer.style.minHeight = computedHeight + 'px';
       computedHeight = 0;
+
+      if(typeof mason.onRebuild === 'function') {
+        mason.onRebuild();
+      }
 
     },parseInt(timeout));
 
@@ -233,6 +245,6 @@ window.onresize = function() {
             if (widthBefore !== mason.brickContainer.clientWidth) {
                 build(mason.options);
             }
-        }, 200);
+        }, 300);
     }
 };

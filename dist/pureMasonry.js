@@ -50,6 +50,7 @@ var PureMasonry =
 	var brickContainer = void 0;
 	var mason = {};
 	var timeout = void 0;
+	var is_moved = void 0;
 	var defaultOptions = {
 	    container: '#masonry-wall',
 	    width: 320,
@@ -129,11 +130,16 @@ var PureMasonry =
 	                underConstruction: m_resp
 	            },
 	            brickContainer: brickContainer,
-	            advanced: m_adv
+	            advanced: options.advanced
 	        };
+	
+	        if (typeof options.onRebuild === 'function') {
+	            mason.onRebuild = options.onRebuild;
+	        }
 	
 	        // on load build masonry
 	        window.onload = function () {
+	
 	            build(mason.options);
 	            return;
 	        };
@@ -235,6 +241,7 @@ var PureMasonry =
 	        columnHeight[minColumnKey] += bricks[brickIndex].offsetHeight + options.verticalGutter;
 	        brickIndex++;
 	    }
+	
 	    if (typeof mason.advanced.centered !== 'undefined' && mason.advanced.centered === true) {
 	        var width = bricksPerRow * mason.options.brickWidth;
 	        brickContainer.style.width = width + mason.options.horizontalGutter * bricksPerRow + 'px';
@@ -245,6 +252,7 @@ var PureMasonry =
 	    // if transition is setup need to wait until bricks are moved first then calc height
 	    setTimeout(function () {
 	        var combHeightOffsetValues = [];
+	        console.log('--here');
 	
 	        for (var ind = 0; ind < bricks.length; ind++) {
 	            var css_decl = window.getComputedStyle(bricks[ind]);
@@ -255,6 +263,10 @@ var PureMasonry =
 	
 	        brickContainer.style.minHeight = computedHeight + 'px';
 	        computedHeight = 0;
+	
+	        if (typeof mason.onRebuild === 'function') {
+	            mason.onRebuild();
+	        }
 	    }, parseInt(timeout));
 	};
 	
@@ -274,7 +286,7 @@ var PureMasonry =
 	            if (widthBefore !== mason.brickContainer.clientWidth) {
 	                build(mason.options);
 	            }
-	        }, 200);
+	        }, 300);
 	    }
 	};
 

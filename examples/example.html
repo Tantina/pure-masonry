@@ -58,6 +58,9 @@
       },
       advanced: {
         centered: true
+      },
+      onRebuild: function() {
+        console.log('rebuilt');
       }
     };
     PureMasonry.init(options);
