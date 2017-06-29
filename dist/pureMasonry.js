@@ -73,7 +73,6 @@ var PureMasonry =
 	
 	        // select container to hold masonry
 	        brickContainer = typeof options.container === 'undefined' ? document.querySelector(defaultOptions.container) : document.querySelector(options.container);
-	        console.log(options);
 	        /*
 	         ** config values to overwrite if some of params are not supplied
 	         */
@@ -207,7 +206,6 @@ var PureMasonry =
 	        if (brickIndex < bricks.length) {
 	            //  set coordinates for brick
 	            bricks[brickIndex].style.left = column * grossWidth + 'px';
-	            console.log();
 	            bricks[brickIndex].style.top = '0px';
 	            //  update the height of the column just appended
 	            columnHeight[column] = bricks[brickIndex].offsetHeight;

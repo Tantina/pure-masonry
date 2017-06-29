@@ -28,7 +28,7 @@ Add pureMasonry.js to your project code and init the Plugin like shown below
 **OR**
 If you use `webpack` you can do 
 ```javascript
-require('pure-masonry');
+let PureMasonry = require('pure-masonry-js');
 PureMasonry.init();
 ```
 
