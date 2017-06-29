@@ -2,7 +2,7 @@
   "name": "pure-masonry-js",
   "title": "Pure Masonry",
   "private": false,
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "Masonry DOM effect with pure JavaScript",
   "main": "src/pureMasonry.js",
   "repository": {

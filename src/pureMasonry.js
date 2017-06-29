@@ -87,13 +87,9 @@ module.exports = {
         if(typeof options.onRebuild === 'function') {
           mason.onRebuild = options.onRebuild;
         }
-
-        // on load build masonry
-        window.onload = function() {
             
-            build(mason.options);
-            return;
-        }
+        build(mason.options);
+        return;
     }
 };
 
