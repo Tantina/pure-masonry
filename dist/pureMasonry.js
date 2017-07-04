@@ -137,12 +137,8 @@ var PureMasonry =
 	            mason.onRebuild = options.onRebuild;
 	        }
 	
-	        // on load build masonry
-	        window.onload = function () {
-	
-	            build(mason.options);
-	            return;
-	        };
+	        build(mason.options);
+	        return;
 	    }
 	};
 	
@@ -243,8 +239,9 @@ var PureMasonry =
 	    }
 	
 	    if (typeof mason.advanced.centered !== 'undefined' && mason.advanced.centered === true) {
-	        var width = bricksPerRow * mason.options.brickWidth;
-	        brickContainer.style.width = width + mason.options.horizontalGutter * bricksPerRow + 'px';
+	        var mult = bricksPerRow > bricks.length ? bricks.length : bricksPerRow;
+	        var width = mult * mason.options.brickWidth;
+	        brickContainer.style.width = width + mason.options.horizontalGutter * mult + 'px';
 	        brickContainer.style.marginLeft = 'auto';
 	        brickContainer.style.marginRight = 'auto';
 	    }

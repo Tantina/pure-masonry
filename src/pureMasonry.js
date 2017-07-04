@@ -196,8 +196,9 @@ let build = function(options) {
     }
 
     if (typeof mason.advanced.centered !== 'undefined' && mason.advanced.centered === true) {
-      let width = bricksPerRow * mason.options.brickWidth;
-      brickContainer.style.width = width + (mason.options.horizontalGutter * bricksPerRow) + 'px';
+      let mult = bricksPerRow > bricks.length ? bricks.length : bricksPerRow;
+      let width = mult * mason.options.brickWidth;
+      brickContainer.style.width = width + (mason.options.horizontalGutter * mult) + 'px';
       brickContainer.style.marginLeft = 'auto';
       brickContainer.style.marginRight = 'auto';
     }

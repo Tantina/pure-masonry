@@ -22,6 +22,12 @@ gulp.task('webpack', function() {
   .pipe(gulp.dest('dist/'));
 });
 
+gulp.task('uglify', function() {
+  gulp.src('dist/pureMasonry.js')
+    .pipe(uglify('pureMasonry.min.js'))
+    .pipe(gulp.dest('dist/'))
+});
+
 gulp.task('default', ['sass', 'webpack']);
 
 gulp.task('watch', function() {
